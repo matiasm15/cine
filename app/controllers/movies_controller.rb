@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class MoviesController < ApplicationController
+  before_action :authenticate_request!
   before_action :set_movie, only: %w[show update destroy]
 
   def index
@@ -18,7 +19,9 @@ class MoviesController < ApplicationController
   end
 
   def update
-    render @movie.update!(movie_params)
+    @movie.update!(movie_params)
+
+    show
   end
 
   def destroy

@@ -16,6 +16,10 @@ if Rails.env.production?
 end
 
 Rails.application.routes.draw do
+  devise_for :users
+
+  post '/auth', to: 'authentication#auth'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :functions, except: [:new, :edit]

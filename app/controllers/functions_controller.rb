@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class FunctionsController < ApplicationController
+  before_action :authenticate_request!
   before_action :set_function, only: %w[show update destroy]
 
   def index
@@ -18,7 +19,9 @@ class FunctionsController < ApplicationController
   end
 
   def update
-    render @function.update!(function_params)
+    @function.update!(function_params)
+
+    show
   end
 
   def destroy

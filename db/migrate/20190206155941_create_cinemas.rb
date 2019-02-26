@@ -3,7 +3,7 @@ class CreateCinemas < ActiveRecord::Migration[5.2]
     create_table :cinemas do |t|
       t.string :description
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

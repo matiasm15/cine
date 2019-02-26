@@ -9,7 +9,7 @@ class CreateMovies < ActiveRecord::Migration[5.2]
       t.references :language, foreign_key: true
       t.references :classification, foreign_key: true
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

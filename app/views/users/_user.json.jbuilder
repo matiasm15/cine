@@ -6,6 +6,5 @@ json.(
   user,
   :id,
   :name,
-  :username,
   :created_at
 )

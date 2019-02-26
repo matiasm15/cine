@@ -10,7 +10,7 @@ class CreateFunctions < ActiveRecord::Migration[5.2]
       t.references :cinema, foreign_key: true
       t.references :movie_version, foreign_key: true
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

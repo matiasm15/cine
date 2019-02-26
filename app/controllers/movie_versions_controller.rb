@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class MovieVersionsController < ApplicationController
+  before_action :authenticate_request!
   before_action :set_movie_version, only: %w[show update destroy]
 
   def index

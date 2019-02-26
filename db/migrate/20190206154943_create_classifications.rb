@@ -4,7 +4,7 @@ class CreateClassifications < ActiveRecord::Migration[5.2]
       t.string :code, null: false
       t.string :description
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

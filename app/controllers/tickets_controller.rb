@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class TicketsController < ApplicationController
-  before_action :set_movie, only: %w[show update]
+  before_action :authenticate_request!
+  before_action :set_ticket, only: %w[show update]
 
   def index
     @tickets = tickets.filter_by(filter_params)
@@ -14,15 +15,20 @@ class TicketsController < ApplicationController
   end
 
   def update
-    render @ticket.update!(movie_params)
+    @ticket.user_id = current_user.id
+    @ticket.update!(movie_params)
+
+    show
   end
 
   private
 
   def tickets
-    Ticket.includes(
+    Ticket.where(
+      'user_id = ? OR user_id IS NULL',
+      current_user.id
+    ).includes(
       :seat,
-      :user,
       function: [
         :cinema,
         movie_version: [
@@ -37,19 +43,18 @@ class TicketsController < ApplicationController
     )
   end
 
-  def set_movie
-    @ticket = movies.find(id)
+  def set_ticket
+    @ticket = tickets.find(id)
   end
 
   def movie_params
     params.permit(
-      :status,
-      :user_id
+      :status
     )
   end
 
   def filter_params
-    params.permit(,
+    params.permit(
       :function_id,
       :user_id
     )

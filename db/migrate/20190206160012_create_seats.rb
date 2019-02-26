@@ -4,7 +4,7 @@ class CreateSeats < ActiveRecord::Migration[5.2]
       t.string :code, null: false
       t.references :cinema, foreign_key: true
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

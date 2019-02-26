@@ -58,6 +58,14 @@ gem 'kaminari'
 # https://github.com/davidcelis/api-pagination
 gem 'api-pagination'
 
+# Flexible authentication solution for Rails with Warden
+# https://github.com/plataformatec/devise
+gem 'devise'
+
+# A pure ruby implementation of the JSON Web Token (JWT) standard
+# https://github.com/jwt/ruby-jwt
+gem 'jwt'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
